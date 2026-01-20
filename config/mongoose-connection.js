@@ -1,11 +1,13 @@
 const mongoose = require('mongoose')
+const dbgr = require('debug')("development: mongoose")
+require('dotenv').config()
 
-
+dbgr
 mongoose
-.connect("mongodb://127.0.0.1:27017/scatch")
+.connect(process.env.MONGO_URI)
 .then(() => {
-    console.log('MongoDb Connected SuccessFully')
+    dbgr('MongoDb Connected SuccessFully')
 })
 .catch((err) => {
-    console.log(err)
+    dbgr(err)
 })
