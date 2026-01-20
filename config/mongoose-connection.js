@@ -1,13 +1,14 @@
 const mongoose = require('mongoose')
-const dbgr = require('debug')("development: mongoose")
 require('dotenv').config()
 
-dbgr
-mongoose
-.connect(process.env.MONGO_URI)
-.then(() => {
-    dbgr('MongoDb Connected SuccessFully')
-})
-.catch((err) => {
-    dbgr(err)
-})
+let isConnected = false
+
+async function connectDB() {
+  if (isConnected) return
+
+  await mongoose.connect(process.env.MONGO_URI)
+  isConnected = true
+  console.log('MongoDB connected')
+}
+
+connectDB()

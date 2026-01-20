@@ -42,4 +42,5 @@ app.use('/users', usersRoutes)
 app.use('/products', productsRoutes)
 
 
-app.listen(3000)
+
+module.exports = app
