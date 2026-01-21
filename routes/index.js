@@ -9,7 +9,6 @@ router.get('/', (req,res) => {
     res.render('index', {error, loggedin: false})
 })
 
-
 router.get('/addtocart/:productid', isLoggedin ,async (req,res) => {
     try{
     let user = await userModel.findOne({email: req.user.email})
